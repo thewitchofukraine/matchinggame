@@ -21,12 +21,6 @@ body {
     gap: 20px;
 }
 
-.header {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-}
-
 .grid-container {
     display: flex;
     justify-content: center;
@@ -100,9 +94,22 @@ body {
     cursor: default;
 }
 
-.team-card {
-    background-color: #4CAF50;
+.team-card-1 {
+    background-color: #ff0000; /* Red color */
     color: white;
-    font-size: 1em;
-    cursor: pointer;
+}
+
+.team-card-2 {
+    background-color: #0000ff; /* Blue color */
+    color: white;
+}
+
+.team-card-3 {
+    background-color: #00ff00; /* Green color */
+    color: white;
+}
+
+.team-card-4 {
+    background-color: #ffff00; /* Yellow color */
+    color: black;
 }
