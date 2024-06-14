@@ -108,7 +108,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.startGame = startGame;
 });
-
-
-    window.startGame = startGame;
-});
