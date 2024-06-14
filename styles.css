@@ -60,3 +60,13 @@ body {
     background-color: #00cc66;
     cursor: default;
 }
+
+.card.flipped {
+    background-color: #ffcc00;
+    cursor: default;
+}
+
+.card.matched {
+    background-color: #00cc66;
+    cursor: default;
+}
