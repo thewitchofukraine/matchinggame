@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Animal Pair Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="scoreboard-container">
+            <div class="team-selection">
+                <button id="T1" onclick="startGame(2)">2 Teams</button>
+                <button id="T2" onclick="startGame(3)">3 Teams</button>
+                <button id="T3" onclick="startGame(4)">4 Teams</button>
+            </div>
+            <div class="turn-indicator">
+                Current Turn: <span id="currentTeam">Team 1</span>
+            </div>
+            <div class="scoreboard" id="scoreboard">
+                <!-- Dynamic scoreboard based on team selection -->
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid" id="gameGrid"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
 
