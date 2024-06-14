@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.classList.add("card");
             card.dataset.animal = animal;
             card.dataset.index = index;
-            card.innerText = "?";
+            card.innerText = getCardLabel(index);
             card.addEventListener("click", flipCard);
             grid.appendChild(card);
         });
@@ -76,8 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function unflipCards() {
-        firstCard.innerText = "?";
-        secondCard.innerText = "?";
+        firstCard.innerText = getCardLabel(firstCard.dataset.index);
+        secondCard.innerText = getCardLabel(secondCard.dataset.index);
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
         resetTurn();
@@ -97,6 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateScore() {
         scores[currentPlayer - 1]++;
         document.getElementById(`score${currentPlayer}`).innerText = scores[currentPlayer - 1];
+    }
+
+    function getCardLabel(index) {
+        const letters = ["A", "B", "C", "D", "E"];
+        return letters[Math.floor(index / 4)] + (index % 4 + 1);
     }
 
     window.startGame = startGame;
