@@ -58,16 +58,16 @@ body {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 150px); /* Increased size of squares */
-    grid-template-rows: repeat(5, 150px); /* Increased size of squares */
+    grid-template-columns: repeat(4, 150px);
+    grid-template-rows: repeat(5, 150px);
     gap: 10px;
 }
 
 .card {
-    width: 150px; /* Increased size of squares */
-    height: 150px; /* Increased size of squares */
-    background-color: #8b0000; /* Dark red color */
-    color: #ffffff; /* White text */
+    width: 150px;
+    height: 150px;
+    background-color: #8b0000;
+    color: #ffffff;
     border: 2px solid #cccccc;
     border-radius: 10px;
     display: flex;
@@ -78,12 +78,11 @@ body {
 }
 
 .card.flipped {
-    background-color: #ffcc00; /* Yellow color */
+    background-color: #ffcc00;
     cursor: default;
 }
 
 .card.matched {
-    background-color: #00cc66; /* Green color */
+    background-color: #00cc66;
     cursor: default;
 }
-
