@@ -17,26 +17,24 @@ document.addEventListener("DOMContentLoaded", () => {
         scores = new Array(totalTeams).fill(0);
         currentPlayer = 1;
 
-        const animalNames = ["Lion", "Tiger", "Bear", "Elephant", "Giraffe", "Monkey", "Zebra", "Panda"];
+        const animalNames = ["Lion", "Tiger", "Bear", "Elephant", "Giraffe", "Monkey", "Zebra", "Panda", "Koala", "Leopard"];
         const pairs = [...animalNames, ...animalNames];
         shuffleArray(pairs);
 
-        pairs.forEach((animal, index) => {
+        for (let i = 0; i < 20; i++) {
             let card = document.createElement("div");
             card.classList.add("card");
-            card.dataset.animal = animal;
-            card.dataset.index = index;
-            card.innerText = getCardLabel(index);
-            card.addEventListener("click", flipCard);
+            if (i < totalTeams) {
+                card.classList.add("team-card");
+                card.id = `team${i+1}`;
+                card.innerHTML = `<span>Team ${i+1}: <span id="score${i+1}">0</span></span>`;
+            } else {
+                card.dataset.animal = pairs[i - totalTeams];
+                card.dataset.index = i;
+                card.innerText = "?";
+                card.addEventListener("click", flipCard);
+            }
             grid.appendChild(card);
-        });
-
-        for (let i = 1; i <= totalTeams; i++) {
-            let teamDiv = document.createElement("div");
-            teamDiv.classList.add("team");
-            teamDiv.id = `team${i}`;
-            teamDiv.innerHTML = `<h2>Team ${i}: <span id="score${i}">0</span></h2>`;
-            scoreboard.appendChild(teamDiv);
         }
 
         document.getElementById("currentTeam").innerText = `Team 1`;
@@ -50,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function flipCard() {
-        if (this.classList.contains("flipped") || this.classList.contains("matched")) return;
+        if (this.classList.contains("flipped") || this.classList.contains("matched") || this.classList.contains("team-card")) return;
         if (firstCard && secondCard) return;
 
         this.classList.add("flipped");
@@ -76,8 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function unflipCards() {
-        firstCard.innerText = getCardLabel(firstCard.dataset.index);
-        secondCard.innerText = getCardLabel(secondCard.dataset.index);
+        firstCard.innerText = "?";
+        secondCard.innerText = "?";
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
         resetTurn();
@@ -99,11 +97,5 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById(`score${currentPlayer}`).innerText = scores[currentPlayer - 1];
     }
 
-    function getCardLabel(index) {
-        const letters = ["A", "B", "C", "D", "E"];
-        return letters[Math.floor(index / 4)] + (index % 4 + 1);
-    }
-
     window.startGame = startGame;
 });
-
