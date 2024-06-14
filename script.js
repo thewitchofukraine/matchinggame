@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function flipCard(card, value) {
-        if (lockBoard || card === firstCard) return;
+        if (lockBoard || card === firstCard || card.classList.contains('matched')) return;
 
         card.classList.add('flipped');
         if (!firstCard) {
@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleMatch() {
+        firstCard.card.classList.add('matched');
+        secondCard.card.classList.add('matched');
+
         if (currentTurn === 'Team 1') {
             team1Score++;
             team1ScoreElem.textContent = team1Score;
@@ -58,8 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
             team2ScoreElem.textContent = team2Score;
         }
 
-        firstCard.card.removeEventListener('click', flipCard);
-        secondCard.card.removeEventListener('click', flipCard);
         resetBoard(false);
     }
 

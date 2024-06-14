@@ -51,6 +51,11 @@ body {
     transform: scale(1.05);
 }
 
+.card.matched {
+    background-color: #28a745; /* Green color for matched cards */
+    cursor: default; /* Disable pointer cursor */
+}
+
 .card.flipped .card-content {
     transform: rotateY(180deg);
 }
