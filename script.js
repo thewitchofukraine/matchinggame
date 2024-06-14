@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const animalNames = ["Lion", "Tiger", "Bear", "Elephant", "Giraffe", "Monkey", "Zebra", "Panda"];
     const pairs = [...animalNames, ...animalNames];
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.classList.add("card");
         card.dataset.animal = animal;
         card.dataset.index = index;
-        card.innerText = index + 1;
+        card.innerText = "?";
         card.addEventListener("click", flipCard);
         grid.appendChild(card);
     });
@@ -52,8 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function unflipCards() {
-        firstCard.innerText = firstCard.dataset.index;
-        secondCard.innerText = secondCard.dataset.index;
+        firstCard.innerText = "?";
+        secondCard.innerText = "?";
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
         resetTurn();
