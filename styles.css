@@ -28,10 +28,30 @@ body {
     cursor: pointer;
 }
 
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
+}
+
+.scoreboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
 .scoreboard {
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .team {
@@ -42,15 +62,7 @@ body {
 }
 
 .turn-indicator {
-    margin-bottom: 20px;
     font-size: 1.2em;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 100px);
-    gap: 10px;
-    justify-content: center;
 }
 
 .card {
@@ -75,4 +87,20 @@ body {
 .card.matched {
     background-color: #00cc66; /* Green color */
     cursor: default;
+}
+
+button#T1 {
+    background-color: red;
+}
+
+button#T2 {
+    background-color: blue;
+}
+
+button#T3 {
+    background-color: green;
+}
+
+button#T4 {
+    background-color: yellow;
 }
