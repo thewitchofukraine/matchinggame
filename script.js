@@ -1,23 +1,46 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-    const animalNames = ["Lion", "Tiger", "Bear", "Elephant", "Giraffe", "Monkey", "Zebra", "Panda"];
-    const pairs = [...animalNames, ...animalNames];
     let grid = document.getElementById("gameGrid");
-    let score1 = 0, score2 = 0;
+    let scoreboard = document.getElementById("scoreboard");
     let currentPlayer = 1;
     let firstCard = null, secondCard = null;
+    let scores = [];
+    let totalTeams = 2;
 
-    shuffleArray(pairs);
+    function startGame(teams) {
+        totalTeams = teams;
+        initializeGame();
+    }
 
-    pairs.forEach((animal, index) => {
-        let card = document.createElement("div");
-        card.classList.add("card");
-        card.dataset.animal = animal;
-        card.dataset.index = index;
-        card.innerText = "?";
-        card.addEventListener("click", flipCard);
-        grid.appendChild(card);
-    });
+    function initializeGame() {
+        grid.innerHTML = '';
+        scoreboard.innerHTML = '';
+        scores = new Array(totalTeams).fill(0);
+        currentPlayer = 1;
+
+        const animalNames = ["Lion", "Tiger", "Bear", "Elephant", "Giraffe", "Monkey", "Zebra", "Panda"];
+        const pairs = [...animalNames, ...animalNames];
+        shuffleArray(pairs);
+
+        pairs.forEach((animal, index) => {
+            let card = document.createElement("div");
+            card.classList.add("card");
+            card.dataset.animal = animal;
+            card.dataset.index = index;
+            card.innerText = "?";
+            card.addEventListener("click", flipCard);
+            grid.appendChild(card);
+        });
+
+        for (let i = 1; i <= totalTeams; i++) {
+            let teamDiv = document.createElement("div");
+            teamDiv.classList.add("team");
+            teamDiv.id = `team${i}`;
+            teamDiv.innerHTML = `<h2>Team ${i}: <span id="score${i}">0</span></h2>`;
+            scoreboard.appendChild(teamDiv);
+        }
+
+        document.getElementById("currentTeam").innerText = `Team 1`;
+    }
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -67,17 +90,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function switchPlayer() {
-        currentPlayer = currentPlayer === 1 ? 2 : 1;
+        currentPlayer = (currentPlayer % totalTeams) + 1;
         document.getElementById("currentTeam").innerText = `Team ${currentPlayer}`;
     }
 
     function updateScore() {
-        if (currentPlayer === 1) {
-            score1++;
-            document.getElementById("score1").innerText = score1;
-        } else {
-            score2++;
-            document.getElementById("score2").innerText = score2;
-        }
+        scores[currentPlayer - 1]++;
+        document.getElementById(`score${currentPlayer}`).innerText = scores[currentPlayer - 1];
     }
+
+    window.startGame = startGame;
 });
