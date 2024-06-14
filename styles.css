@@ -50,34 +50,6 @@ body {
     gap: 10px;
 }
 
-.team {
-    width: 150px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    color: white;
-    border-radius: 10px;
-}
-
-.team-card-1 {
-    background-color: #ff0000; /* Red color */
-}
-
-.team-card-2 {
-    background-color: #0000ff; /* Blue color */
-}
-
-.team-card-3 {
-    background-color: #00ff00; /* Green color */
-}
-
-.team-card-4 {
-    background-color: #ffff00; /* Yellow color */
-    color: black;
-}
-
 .grid-container {
     display: flex;
     justify-content: center;
