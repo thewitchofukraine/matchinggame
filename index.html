@@ -14,13 +14,17 @@
             <button onclick="startGame(3)">3 Teams</button>
             <button onclick="startGame(4)">4 Teams</button>
         </div>
-        <div class="scoreboard" id="scoreboard">
-            <!-- Dynamic scoreboard based on team selection -->
+        <div class="grid-container">
+            <div class="grid" id="gameGrid"></div>
+            <div class="scoreboard-container">
+                <div class="scoreboard" id="scoreboard">
+                    <!-- Dynamic scoreboard based on team selection -->
+                </div>
+                <div class="turn-indicator">
+                    Current Turn: <span id="currentTeam">Team 1</span>
+                </div>
+            </div>
         </div>
-        <div class="turn-indicator">
-            Current Turn: <span id="currentTeam">Team 1</span>
-        </div>
-        <div class="grid" id="gameGrid"></div>
     </div>
     <script src="script.js"></script>
 </body>
