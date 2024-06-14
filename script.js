@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let card = document.createElement("div");
             card.classList.add("card");
             if (i < totalTeams) {
-                card.classList.add("team-card");
+                card.classList.add(`team-card-${i+1}`);
                 card.id = `team${i+1}`;
                 card.innerHTML = `<span>Team ${i+1}: <span id="score${i+1}">0</span></span>`;
             } else {
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function flipCard() {
-        if (this.classList.contains("flipped") || this.classList.contains("matched") || this.classList.contains("team-card")) return;
+        if (this.classList.contains("flipped") || this.classList.contains("matched") || this.classList.contains("team-card-1") || this.classList.contains("team-card-2") || this.classList.contains("team-card-3") || this.classList.contains("team-card-4")) return;
         if (firstCard && secondCard) return;
 
         this.classList.add("flipped");
