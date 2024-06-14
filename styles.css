@@ -10,7 +10,7 @@ body {
 
 .game-container {
     text-align: center;
-    background: url('/mnt/data/60500633-753E-4445-AD73-E2351A058D86.jpeg') no-repeat center center;
+    background: url('path/to/your/background-image.jpg') no-repeat center center;
     background-size: cover;
     padding: 20px;
     border-radius: 10px;
@@ -42,11 +42,6 @@ body {
     gap: 20px;
 }
 
-.turn-indicator {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
 .team-selection {
     margin-bottom: 20px;
 }
@@ -56,6 +51,11 @@ body {
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
+}
+
+.turn-indicator {
+    font-size: 1.2em;
+    margin-top: 20px;
 }
 
 .scoreboard {
