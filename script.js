@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM fully loaded and parsed");
-
     let grid = document.getElementById("gameGrid");
     let scoreboard = document.getElementById("scoreboard");
     let currentPlayer = 1;
@@ -9,14 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalTeams = 2;
 
     function startGame(teams) {
-        console.log("Starting game with " + teams + " teams");
         totalTeams = teams;
         initializeGame();
     }
 
     function initializeGame() {
-        console.log("Initializing game");
-
         grid.innerHTML = '';
         scoreboard.innerHTML = '';
         scores = new Array(totalTeams).fill(0);
@@ -113,4 +108,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.startGame = startGame;
 });
-
