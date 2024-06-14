@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 1; i <= totalTeams; i++) {
             let teamDiv = document.createElement("div");
             teamDiv.classList.add("team");
-            teamDiv.classList.add(`team-card-${i}`);
             teamDiv.id = `team${i}`;
             teamDiv.innerHTML = `<span>Team ${i}: <span id="score${i}">0</span></span>`;
             scoreboard.appendChild(teamDiv);
