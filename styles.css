@@ -51,9 +51,8 @@ body {
     transform: scale(1.05);
 }
 
-.card.matched {
+.card.matched .front {
     background-color: #28a745; /* Green color for matched cards */
-    cursor: default; /* Disable pointer cursor */
 }
 
 .card.flipped .card-content {
@@ -83,7 +82,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 36px;
+    font-size: 24px;
     font-weight: bold;
     border-radius: 10px;
 }

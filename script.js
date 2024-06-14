@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const team1ScoreElem = document.getElementById('team1Score');
     const team2ScoreElem = document.getElementById('team2Score');
     const currentTurnElem = document.getElementById('currentTurn');
-    const cardValues = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H'];
+    const animals = ['Cat', 'Dog', 'Fox', 'Cow', 'Pig', 'Bat', 'Hen', 'Ant'];
+    const cardValues = animals.concat(animals);
     let firstCard = null;
     let secondCard = null;
     let lockBoard = false;
@@ -18,13 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function createCard(value) {
+    function createCard(value, index) {
         const card = document.createElement('div');
         card.classList.add('card');
         card.innerHTML = `
             <div class="card-content">
-                <div class="front">${value}</div>
-                <div class="back"></div>
+                <div class="front">${index + 1}</div>
+                <div class="back">${value}</div>
             </div>
         `;
         card.addEventListener('click', () => flipCard(card, value));
@@ -82,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initGame() {
         shuffle(cardValues);
-        cardValues.forEach(value => {
-            const card = createCard(value);
+        cardValues.forEach((value, index) => {
+            const card = createCard(value, index);
             gameBoard.appendChild(card);
         });
     }
