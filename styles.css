@@ -15,17 +15,16 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-.team-selection {
-    margin-bottom: 20px;
-}
-
-.team-selection button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
+.header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 .grid-container {
@@ -37,7 +36,8 @@ body {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
+    grid-template-columns: repeat(4, 150px); /* Increased size of squares */
+    grid-template-rows: repeat(5, 150px); /* Increased size of squares */
     gap: 10px;
 }
 
@@ -46,6 +46,17 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+.team-selection {
+    margin-bottom: 20px;
+}
+
+.team-selection button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
 }
 
 .scoreboard {
@@ -66,8 +77,8 @@ body {
 }
 
 .card {
-    width: 100px;
-    height: 100px;
+    width: 150px; /* Increased size of squares */
+    height: 150px; /* Increased size of squares */
     background-color: #8b0000; /* Dark red color */
     color: #ffffff; /* White text */
     border: 2px solid #cccccc;
@@ -89,18 +100,9 @@ body {
     cursor: default;
 }
 
-button#T1 {
-    background-color: red;
-}
-
-button#T2 {
-    background-color: blue;
-}
-
-button#T3 {
-    background-color: green;
-}
-
-button#T4 {
-    background-color: yellow;
+.team-card {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
 }
