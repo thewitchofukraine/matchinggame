@@ -1,1 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    text-align: center;
+    background: url('path/to/your/background-image.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.scoreboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.team-selection {
+    margin-bottom: 20px;
+}
+
+.team-selection button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.turn-indicator {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 150px); /* Increased size of squares */
+    grid-template-rows: repeat(5, 150px); /* Increased size of squares */
+    gap: 10px;
+}
+
+.card {
+    width: 150px; /* Increased size of squares */
+    height: 150px; /* Increased size of squares */
+    background-color: #8b0000; /* Dark red color */
+    color: #ffffff; /* White text */
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.card.flipped {
+    background-color: #ffcc00; /* Yellow color */
+    cursor: default;
+}
+
+.card.matched {
+    background-color: #00cc66; /* Green color */
+    cursor: default;
+}
 
