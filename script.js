@@ -1,93 +1,82 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const gameBoard = document.getElementById('gameBoard');
-    const team1ScoreElem = document.getElementById('team1Score');
-    const team2ScoreElem = document.getElementById('team2Score');
-    const currentTurnElem = document.getElementById('currentTurn');
-    const animals = ['Cat', 'Dog', 'Fox', 'Cow', 'Pig', 'Bat', 'Hen', 'Ant'];
-    const cardValues = animals.concat(animals);
-    let firstCard = null;
-    let secondCard = null;
-    let lockBoard = false;
-    let currentTurn = 'Team 1';
-    let team1Score = 0;
-    let team2Score = 0;
+document.addEventListener("DOMContentLoaded", () => {
+    const animalNames = ["Lion", "Tiger", "Bear", "Elephant", "Giraffe", "Monkey", "Zebra", "Panda"];
+    const pairs = [...animalNames, ...animalNames];
+    let grid = document.getElementById("gameGrid");
+    let score1 = 0, score2 = 0;
+    let currentPlayer = 1;
+    let firstCard = null, secondCard = null;
 
-    function shuffle(array) {
+    shuffleArray(pairs);
+
+    pairs.forEach((animal, index) => {
+        let card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.animal = animal;
+        card.dataset.index = index;
+        card.innerText = index + 1;
+        card.addEventListener("click", flipCard);
+        grid.appendChild(card);
+    });
+
+    function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
+            let j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
 
-    function createCard(value, index) {
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.innerHTML = `
-            <div class="card-content">
-                <div class="front">${index + 1}</div>
-                <div class="back">${value}</div>
-            </div>
-        `;
-        card.addEventListener('click', () => flipCard(card, value));
-        return card;
-    }
+    function flipCard() {
+        if (this.classList.contains("flipped") || this.classList.contains("matched")) return;
+        if (firstCard && secondCard) return;
 
-    function flipCard(card, value) {
-        if (lockBoard || card === firstCard || card.classList.contains('matched')) return;
+        this.classList.add("flipped");
+        this.innerText = this.dataset.animal;
 
-        card.classList.add('flipped');
         if (!firstCard) {
-            firstCard = { card, value };
+            firstCard = this;
         } else {
-            secondCard = { card, value };
-            lockBoard = true;
+            secondCard = this;
             checkForMatch();
         }
     }
 
     function checkForMatch() {
-        const isMatch = firstCard.value === secondCard.value;
-        isMatch ? handleMatch() : unflipCards();
-    }
-
-    function handleMatch() {
-        firstCard.card.classList.add('matched');
-        secondCard.card.classList.add('matched');
-
-        if (currentTurn === 'Team 1') {
-            team1Score++;
-            team1ScoreElem.textContent = team1Score;
+        if (firstCard.dataset.animal === secondCard.dataset.animal) {
+            firstCard.classList.add("matched");
+            secondCard.classList.add("matched");
+            updateScore();
+            resetTurn();
         } else {
-            team2Score++;
-            team2ScoreElem.textContent = team2Score;
+            setTimeout(unflipCards, 1000);
         }
-
-        resetBoard(false);
     }
 
     function unflipCards() {
-        setTimeout(() => {
-            firstCard.card.classList.remove('flipped');
-            secondCard.card.classList.remove('flipped');
-            resetBoard(true);
-        }, 1500);
+        firstCard.innerText = firstCard.dataset.index;
+        secondCard.innerText = secondCard.dataset.index;
+        firstCard.classList.remove("flipped");
+        secondCard.classList.remove("flipped");
+        resetTurn();
+        switchPlayer();
     }
 
-    function resetBoard(switchTurn) {
-        [firstCard, secondCard, lockBoard] = [null, null, false];
-        if (switchTurn) {
-            currentTurn = currentTurn === 'Team 1' ? 'Team 2' : 'Team 1';
-            currentTurnElem.textContent = currentTurn;
+    function resetTurn() {
+        firstCard = null;
+        secondCard = null;
+    }
+
+    function switchPlayer() {
+        currentPlayer = currentPlayer === 1 ? 2 : 1;
+        document.getElementById("currentTeam").innerText = `Team ${currentPlayer}`;
+    }
+
+    function updateScore() {
+        if (currentPlayer === 1) {
+            score1++;
+            document.getElementById("score1").innerText = score1;
+        } else {
+            score2++;
+            document.getElementById("score2").innerText = score2;
         }
     }
-
-    function initGame() {
-        shuffle(cardValues);
-        cardValues.forEach((value, index) => {
-            const card = createCard(value, index);
-            gameBoard.appendChild(card);
-        });
-    }
-
-    initGame();
 });
