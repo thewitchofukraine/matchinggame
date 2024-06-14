@@ -42,6 +42,11 @@ body {
     gap: 20px;
 }
 
+.turn-indicator {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
 .team-selection {
     margin-bottom: 20px;
 }
@@ -60,14 +65,31 @@ body {
 }
 
 .team {
-    background-color: #ffffff;
-    border: 2px solid #cccccc;
-    padding: 10px 20px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: white;
     border-radius: 10px;
 }
 
-.turn-indicator {
-    font-size: 1.2em;
+.team-card-1 {
+    background-color: #ff0000; /* Red color */
+}
+
+.team-card-2 {
+    background-color: #0000ff; /* Blue color */
+}
+
+.team-card-3 {
+    background-color: #00ff00; /* Green color */
+}
+
+.team-card-4 {
+    background-color: #ffff00; /* Yellow color */
+    color: black;
 }
 
 .card {
@@ -92,24 +114,4 @@ body {
 .card.matched {
     background-color: #00cc66; /* Green color */
     cursor: default;
-}
-
-.team-card-1 {
-    background-color: #ff0000; /* Red color */
-    color: white;
-}
-
-.team-card-2 {
-    background-color: #0000ff; /* Blue color */
-    color: white;
-}
-
-.team-card-3 {
-    background-color: #00ff00; /* Green color */
-    color: white;
-}
-
-.team-card-4 {
-    background-color: #ffff00; /* Yellow color */
-    color: black;
 }
