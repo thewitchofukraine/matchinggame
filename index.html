@@ -8,15 +8,17 @@
 </head>
 <body>
     <div class="game-container">
-        <h1>Matching Animal Pair Game</h1>
-        <div class="team-selection">
-            <button onclick="startGame(2)">2 Teams</button>
-            <button onclick="startGame(3)">3 Teams</button>
-            <button onclick="startGame(4)">4 Teams</button>
+        <div class="header">
+            <h1>Matching Animal Pair Game</h1>
         </div>
         <div class="grid-container">
             <div class="grid" id="gameGrid"></div>
             <div class="scoreboard-container">
+                <div class="team-selection">
+                    <button id="T1" onclick="startGame(2)">2 Teams</button>
+                    <button id="T2" onclick="startGame(3)">3 Teams</button>
+                    <button id="T3" onclick="startGame(4)">4 Teams</button>
+                </div>
                 <div class="scoreboard" id="scoreboard">
                     <!-- Dynamic scoreboard based on team selection -->
                 </div>
