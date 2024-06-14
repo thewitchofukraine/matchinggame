@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Match the Pair Game</title>
+    <title>Matching Pairs Game</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="game-container">
+        <div class="scoreboard">
+            <div>Team 1: <span id="team1Score">0</span></div>
+            <div>Team 2: <span id="team2Score">0</span></div>
+            <div>Current Turn: <span id="currentTurn">Team 1</span></div>
+        </div>
         <div class="game-board" id="gameBoard"></div>
     </div>
     <script src="script.js"></script>

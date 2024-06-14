@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('gameBoard');
+    const team1ScoreElem = document.getElementById('team1Score');
+    const team2ScoreElem = document.getElementById('team2Score');
+    const currentTurnElem = document.getElementById('currentTurn');
     const cardValues = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H'];
     let firstCard = null;
     let secondCard = null;
     let lockBoard = false;
+    let currentTurn = 'Team 1';
+    let team1Score = 0;
+    let team2Score = 0;
 
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -40,25 +46,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function checkForMatch() {
         const isMatch = firstCard.value === secondCard.value;
-        isMatch ? disableCards() : unflipCards();
+        isMatch ? handleMatch() : unflipCards();
     }
 
-    function disableCards() {
+    function handleMatch() {
+        if (currentTurn === 'Team 1') {
+            team1Score++;
+            team1ScoreElem.textContent = team1Score;
+        } else {
+            team2Score++;
+            team2ScoreElem.textContent = team2Score;
+        }
+
         firstCard.card.removeEventListener('click', flipCard);
         secondCard.card.removeEventListener('click', flipCard);
-        resetBoard();
+        resetBoard(false);
     }
 
     function unflipCards() {
         setTimeout(() => {
             firstCard.card.classList.remove('flipped');
             secondCard.card.classList.remove('flipped');
-            resetBoard();
+            resetBoard(true);
         }, 1500);
     }
 
-    function resetBoard() {
+    function resetBoard(switchTurn) {
         [firstCard, secondCard, lockBoard] = [null, null, false];
+        if (switchTurn) {
+            currentTurn = currentTurn === 'Team 1' ? 'Team 2' : 'Team 1';
+            currentTurnElem.textContent = currentTurn;
+        }
     }
 
     function initGame() {
