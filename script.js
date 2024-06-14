@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.add('card');
         card.innerHTML = `
             <div class="card-content">
-                <div class="front">${value}</div>
-                <div class="back">${index + 1}</div>
+                <div class="front">${index + 1}</div>
+                <div class="back">${value}</div>
             </div>
         `;
         card.addEventListener('click', () => flipCard(card, value));
