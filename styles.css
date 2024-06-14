@@ -5,7 +5,7 @@ body {
     height: 100vh;
     background-color: #f0f0f0;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 .game-container {
@@ -17,6 +17,12 @@ body {
 .scoreboard {
     margin-bottom: 20px;
     text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.scoreboard div {
+    margin: 5px 0;
 }
 
 .game-board {
@@ -29,13 +35,20 @@ body {
 .card {
     width: 100px;
     height: 100px;
-    background-color: #ccc;
+    background-color: #007bff;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     cursor: pointer;
     position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
 
 .card.flipped .card-content {
@@ -52,6 +65,8 @@ body {
     transition: transform 0.5s;
     transform-style: preserve-3d;
     transform: rotateY(0deg);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .card-content .front,
@@ -63,10 +78,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    border-radius: 10px;
 }
 
 .card-content .front {
     background-color: #fefefe;
+    color: #007bff;
 }
 
 .card-content .back {
