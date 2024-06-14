@@ -88,12 +88,13 @@ body {
 }
 
 .card-content .front {
-    background-color: #fefefe;
-    color: #007bff;
-}
-
-.card-content .back {
     background-color: #007bff;
     color: white;
     transform: rotateY(180deg);
+}
+
+.card-content .back {
+    background-color: #fefefe;
+    color: #007bff;
+    transform: rotateY(0deg);
 }

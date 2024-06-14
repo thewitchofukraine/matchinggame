@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function createCard(value, index) {
+    function createCard(value) {
         const card = document.createElement('div');
         card.classList.add('card');
         card.innerHTML = `
             <div class="card-content">
-                <div class="front">${index + 1}</div>
-                <div class="back">${value}</div>
+                <div class="front">${value}</div>
+                <div class="back">?</div>
             </div>
         `;
         card.addEventListener('click', () => flipCard(card, value));
@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initGame() {
         shuffle(cardValues);
-        cardValues.forEach((value, index) => {
-            const card = createCard(value, index);
+        cardValues.forEach((value) => {
+            const card = createCard(value);
             gameBoard.appendChild(card);
         });
     }
