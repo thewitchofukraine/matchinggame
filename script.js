@@ -21,19 +21,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const pairs = [...animalNames, ...animalNames];
         shuffleArray(pairs);
 
+        const labels = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4", "D1", "D2", "D3", "D4", "E1", "E2", "E3", "E4"];
+
         for (let i = 0; i < 20; i++) {
             let card = document.createElement("div");
             card.classList.add("card");
-            if (i < totalTeams) {
-                card.classList.add(`team-card-${i+1}`);
-                card.id = `team${i+1}`;
-                card.innerHTML = `<span>Team ${i+1}: <span id="score${i+1}">0</span></span>`;
-            } else {
-                card.dataset.animal = pairs[i - totalTeams];
-                card.dataset.index = i;
-                card.innerText = "?";
-                card.addEventListener("click", flipCard);
-            }
+            card.dataset.animal = pairs[i];
+            card.dataset.index = i;
+            card.innerText = labels[i];
+            card.addEventListener("click", flipCard);
             grid.appendChild(card);
         }
 
@@ -57,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function flipCard() {
-        if (this.classList.contains("flipped") || this.classList.contains("matched") || this.classList.contains("team-card-1") || this.classList.contains("team-card-2") || this.classList.contains("team-card-3") || this.classList.contains("team-card-4")) return;
+        if (this.classList.contains("flipped") || this.classList.contains("matched")) return;
         if (firstCard && secondCard) return;
 
         this.classList.add("flipped");
@@ -83,8 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function unflipCards() {
-        firstCard.innerText = "?";
-        secondCard.innerText = "?";
+        firstCard.innerText = getCardLabel(firstCard.dataset.index);
+        secondCard.innerText = getCardLabel(secondCard.dataset.index);
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
         resetTurn();
@@ -104,6 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateScore() {
         scores[currentPlayer - 1]++;
         document.getElementById(`score${currentPlayer}`).innerText = scores[currentPlayer - 1];
+    }
+
+    function getCardLabel(index) {
+        const labels = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4", "D1", "D2", "D3", "D4", "E1", "E2", "E3", "E4"];
+        return labels[index];
     }
 
     window.startGame = startGame;
