@@ -1,15 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
     const animals = ['Lion', 'Tiger', 'Bear', 'Elephant', 'Lion', 'Tiger', 'Bear', 'Elephant', 'Wolf', 'Deer', 'Wolf', 'Deer', 'Fox', 'Monkey', 'Fox', 'Monkey', 'Zebra', 'Giraffe', 'Zebra', 'Giraffe'];
     const gameBoard = document.getElementById('gameBoard');
+    const teamCountSelector = document.getElementById('teamCount');
     let flippedCards = [];
-    let turn = 1; // 1 for Team 1, 2 for Team 2
-    let score1 = 0, score2 = 0;
+    let turn = 1; // Start with Team 1
+    let scores = [];
 
-    function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
+    teamCountSelector.addEventListener('change', setupTeams);
+
+    function setupTeams() {
+        let teamCount = parseInt(teamCountSelector.value);
+        scores = Array(teamCount).fill(0);
+        updateScoreboard();
+    }
+
+    function createScoreboard() {
+        const scoreboard = document.getElementById('scoreboard');
+        scoreboard.innerHTML = '';
+        scores.forEach((score, index) => {
+            let teamScore = document.createElement('div');
+            teamScore.textContent = `Team ${index + 1} Score: ${score}`;
+            scoreboard.appendChild(teamScore);
+        });
+    }
+
+    function updateScoreboard() {
+        scores.forEach((score, index) => {
+            document.querySelectorAll('#scoreboard div')[index].textContent = `Team ${index + 1} Score: ${score}`;
+        });
     }
 
     function createBoard() {
@@ -41,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             card1.classList.add('matched');
             card2.classList.add('matched');
             updateScore();
-            retainTurn();
         } else {
             card1.classList.remove('flipped');
             card2.classList.remove('flipped');
@@ -53,13 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateScore() {
-        if (turn === 1) {
-            score1++;
-            document.getElementById('score1').textContent = score1;
-        } else {
-            score2++;
-            document.getElementById('score2').textContent = score2;
-        }
+        scores[turn - 1]++;
+        updateScoreboard();
+        retainTurn();
     }
 
     function retainTurn() {
@@ -67,9 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function switchTurn() {
-        turn = turn === 1 ? 2 : 1;
-        document.getElementById('turn').textContent = 'Team ' + turn;
+        turn = turn % scores.length + 1;
+        document.getElementById('turn').textContent = 'Current Turn: Team ' + turn;
     }
 
+    setupTeams();
     createBoard();
 });
