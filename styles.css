@@ -1,43 +1,42 @@
-/* styles.css */
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #e6f7ff; /* Light blue background similar to the sky in the template */
 }
-
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: repeat(5, 100px);
-    gap: 10px;
+    grid-template-columns: repeat(4, 150px);
+    grid-template-rows: repeat(5, 150px);
+    gap: 15px;
     justify-content: center;
     margin-top: 20px;
 }
-
 .card {
-    width: 100px;
-    height: 100px;
-    background-color: #8B0000; /* Dark red, like the image */
+    width: 150px;
+    height: 150px;
+    background-color: #cd5c5c; /* Crimson red for unflipped cards */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
     color: white;
-    position: relative;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
 }
-
 .card.flipped, .card.matched {
-    background-color: #32CD32; /* Light green for flipped or matched cards */
+    background-color: #90ee90; /* Light green for flipped or matched cards */
 }
-
 .card.matched {
     pointer-events: none; /* Disable interaction for matched cards */
 }
-
-#scoreboard div {
-    margin-bottom: 10px;
+#scoreboard {
+    margin: 20px;
+    font-size: 20px;
+    color: #2f4f4f; /* Dark slate gray for text */
 }
-
 #turn {
-    color: red; /* Red for Team 1, change dynamically */
+    font-weight: bold;
+    color: #008000; /* Green text to indicate turn */
 }

@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const animals = ['Lion', 'Tiger', 'Bear', 'Elephant', 'Lion', 'Tiger', 'Bear', 'Elephant', 'Wolf', 'Deer', 'Wolf', 'Deer', 'Fox', 'Monkey', 'Fox', 'Monkey', 'Zebra', 'Giraffe', 'Zebra', 'Giraffe'];
     const gameBoard = document.getElementById('gameBoard');
@@ -29,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.add('flipped');
             card.textContent = card.dataset.animal;
             flippedCards.push(card);
-
             if (flippedCards.length === 2) {
                 setTimeout(checkForMatch, 1000);
             }
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function switchTurn() {
         turn = turn === 1 ? 2 : 1;
-        document.getElementById('turn').textContent = turn === 1 ? 'Team 1' : 'Team 2';
+        document.getElementById('turn').textContent = 'Team ' + turn;
     }
 
     createBoard();
