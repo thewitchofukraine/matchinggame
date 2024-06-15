@@ -12,7 +12,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Align items to the left */
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -21,6 +21,7 @@ body {
 #title {
     font-size: 2rem;
     margin-bottom: 20px;
+    align-self: center; /* Center title */
 }
 
 .grid {
@@ -29,6 +30,7 @@ body {
     gap: 10px;
     width: 100%;
     padding: 10px;
+    margin-bottom: 20px; /* Gap between grid and controls */
 }
 
 .card {
@@ -51,30 +53,25 @@ body {
 #sidebar {
     width: 100%;
     padding: 20px;
-    text-align: center;
-}
-
-#controls label {
-    margin-right: 80px; /* Adjusted padding between the label and the dropdown */
+    text-align: left;
 }
 
 #controls, #scoreboard, #turnIndicator {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 10px;
 }
 
 #scoreboard div {
-    background-color: #FFD700; /* Default gold color */
-    margin: 0 15px; /* Increased padding between team scores */
-    padding: 5px;
-    width: 60px;
-    height: 60px;
+    margin: 0 15px; /* Gaps between score squares */
+    width: 50px;
+    height: 50px;
     line-height: 50px; /* Vertically center the text */
-    color: black;
+    color: white;
     text-align: center;
-    border-radius: 50%; /* Circle shape for the scores */
+    border-radius: 5px;
+    display: inline-block;
 }
 
 #scoreboard div.team1 {
@@ -82,11 +79,11 @@ body {
 }
 
 #scoreboard div.team2 {
-    background-color: #4682B4; /* SteelBlue */
+    background-color: #32CD32; /* LimeGreen */
 }
 
 #scoreboard div.team3 {
-    background-color: #32CD32; /* LimeGreen */
+    background-color: #4682B4; /* SteelBlue */
 }
 
 #scoreboard div.team4 {
