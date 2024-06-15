@@ -7,24 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="game-container">
-        <div class="grid-container">
-            <div class="grid" id="gameGrid"></div>
-            <div class="scoreboard-container">
-                <div class="turn-indicator">
-                    Current Turn: <span id="currentTeam">Team 1</span>
-                </div>
-                <div class="team-selection">
-                    <button id="T1" onclick="startGame(2)">2 Teams</button>
-                    <button id="T2" onclick="startGame(3)">3 Teams</button>
-                    <button id="T3" onclick="startGame(4)">4 Teams</button>
-                </div>
-                <div class="scoreboard" id="scoreboard">
-                    <!-- Dynamic scoreboard based on team selection -->
-                </div>
-            </div>
-        </div>
+    <h1>Matching Animal Pair Game</h1>
+    <div id="scoreboard">
+        <div>Team 1 Score: <span id="score1">0</span></div>
+        <div>Team 2 Score: <span id="score2">0</span></div>
+        <div>Current Turn: <span id="turn">Team 1</span></div>
     </div>
+    <div id="gameBoard" class="grid"></div>
     <script src="script.js"></script>
 </body>
 </html>
