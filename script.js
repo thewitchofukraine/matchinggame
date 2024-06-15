@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let scores;
     let turn = 1;
 
-    teamCountSelector.addEventListener('change', () => initializeGame());
+    teamCountSelector.addEventListener('change', initializeGame);
 
     function initializeGame() {
         scores = new Array(parseInt(teamCountSelector.value)).fill(0);
@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateScore() {
         scores[turn - 1]++;
         setupScoreboard();
-        retainTurn();
     }
 
     function retainTurn() {
@@ -75,7 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreboard.innerHTML = '';
         scores.forEach((score, index) => {
             const scoreDiv = document.createElement('div');
-            scoreDiv.textContent = `Team ${index + 1} Score: ${score}`;
+            scoreDiv.className = `score team${index + 1}`;
+            scoreDiv.innerHTML = `<span>Team ${index + 1}</span><br/>Score: ${score}`;
             scoreboard.appendChild(scoreDiv);
         });
     }
