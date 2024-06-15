@@ -22,7 +22,7 @@ body {
     font-size: 30px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.5s;
 }
 .card.flipped, .card.matched {
     background-color: #90ee90;
