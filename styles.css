@@ -1,8 +1,7 @@
-
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #e6f7ff; /* Light blue background similar to the sky in the template */
+    background-color: #e6f7ff; /* Light blue background */
 }
 .grid {
     display: grid;
