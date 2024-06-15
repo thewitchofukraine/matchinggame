@@ -54,22 +54,43 @@ body {
     text-align: center;
 }
 
-#scoreboard div {
-    display: inline-block;
-    margin: 0 10px; /* 2 gaps */
-    padding: 5px;
-    background-color: #FFD700; /* Gold color for score background */
-    width: 50px; /* Width of the square */
-    height: 50px; /* Height of the square */
-    text-align: center;
-    vertical-align: middle;
-    line-height: 40px; /* Center text vertically */
-    color: black; /* Text color */
-    border-radius: 5px; /* Rounded corners for the square */
+#controls label {
+    margin-right: 80px; /* Adjusted padding between the label and the dropdown */
 }
 
-#controls label {
-    margin-right: 80px; /* 10 gaps - adjust as needed */
+#controls, #scoreboard, #turnIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#scoreboard div {
+    background-color: #FFD700; /* Default gold color */
+    margin: 0 15px; /* Increased padding between team scores */
+    padding: 5px;
+    width: 60px;
+    height: 60px;
+    line-height: 50px; /* Vertically center the text */
+    color: black;
+    text-align: center;
+    border-radius: 50%; /* Circle shape for the scores */
+}
+
+#scoreboard div.team1 {
+    background-color: #FF6347; /* Tomato */
+}
+
+#scoreboard div.team2 {
+    background-color: #4682B4; /* SteelBlue */
+}
+
+#scoreboard div.team3 {
+    background-color: #32CD32; /* LimeGreen */
+}
+
+#scoreboard div.team4 {
+    background-color: #FFD700; /* Gold */
 }
 
 @media (min-width: 600px) {
