@@ -3,7 +3,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 20px;
+    padding: 10px;
     background-color: #e6f7ff;
 }
 .grid {
