@@ -32,7 +32,7 @@ body {
 }
 
 .card {
-    height: 120px; /* Adjusted card height */
+    height: 50px; /* Adjusted card height */
     background-color: #cd5c5c; /* Card background color */
     color: white;
     display: flex;
