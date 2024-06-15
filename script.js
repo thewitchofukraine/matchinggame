@@ -6,31 +6,37 @@ document.addEventListener('DOMContentLoaded', () => {
     let turn = 1; // Start with Team 1
     let scores = [];
 
-    teamCountSelector.addEventListener('change', setupTeams);
+    teamCountSelector.addEventListener('change', function() {
+        setupTeams(parseInt(this.value));
+    });
 
-    function setupTeams() {
-        let teamCount = parseInt(teamCountSelector.value);
-        scores = Array(teamCount).fill(0);
-        updateScoreboard();
+    function setupTeams(teamCount) {
+        scores = new Array(teamCount).fill(0);
+        turn = 1; // Reset turn to Team 1 on team change
+        createScoreboard();
+        createBoard();
     }
 
     function createScoreboard() {
         const scoreboard = document.getElementById('scoreboard');
-        scoreboard.innerHTML = '';
-        scores.forEach((score, index) => {
+        scoreboard.innerHTML = ''; // Clear previous team data
+        for (let i = 0; i < scores.length; i++) {
             let teamScore = document.createElement('div');
-            teamScore.textContent = `Team ${index + 1} Score: ${score}`;
+            teamScore.textContent = `Team ${i + 1} Score: ${scores[i]}`;
             scoreboard.appendChild(teamScore);
-        });
+        }
+        document.getElementById('turn').textContent = `Current Turn: Team ${turn}`;
     }
 
-    function updateScoreboard() {
-        scores.forEach((score, index) => {
-            document.querySelectorAll('#scoreboard div')[index].textContent = `Team ${index + 1} Score: ${score}`;
-        });
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
     }
 
     function createBoard() {
+        gameBoard.innerHTML = ''; // Clear previous board
         shuffle(animals);
         animals.forEach((animal, index) => {
             const card = document.createElement('div');
@@ -60,10 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
             card2.classList.add('matched');
             updateScore();
         } else {
-            card1.classList.remove('flipped');
-            card2.classList.remove('flipped');
-            card1.textContent = 'A' + (Array.from(gameBoard.children).indexOf(card1) + 1);
-            card2.textContent = 'A' + (Array.from(gameBoard.children).indexOf(card2) + 1);
+            flippedCards.forEach(card => {
+                card.classList.remove('flipped');
+                card.textContent = 'A' + (Array.from(gameBoard.children).indexOf(card) + 1);
+            });
             switchTurn();
         }
         flippedCards = [];
@@ -71,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateScore() {
         scores[turn - 1]++;
-        updateScoreboard();
+        document.querySelectorAll('#scoreboard div')[turn - 1].textContent = `Team ${turn} Score: ${scores[turn - 1]}`;
         retainTurn();
     }
 
@@ -80,10 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function switchTurn() {
-        turn = turn % scores.length + 1;
-        document.getElementById('turn').textContent = 'Current Turn: Team ' + turn;
+        turn = (turn % scores.length) + 1;
+        document.getElementById('turn').textContent = `Current Turn: Team ${turn}`;
     }
 
-    setupTeams();
-    createBoard();
+    setupTeams(parseInt(teamCountSelector.value)); // Initialize game with default team count
 });
