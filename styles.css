@@ -3,13 +3,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 10px;
+    padding: 5px;
     background-color: #e6f7ff;
 }
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 150px);
-    gap: 15px;
+    gap: 5px;
     margin: 0 auto;
 }
 .card {
