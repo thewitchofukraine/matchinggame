@@ -1,56 +1,43 @@
+/* styles.css */
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-}
-
-.game-container {
     text-align: center;
-    background: url('/mnt/data/60500633-753E-4445-AD73-E2351A058D86.jpeg') no-repeat center center;
-    background-size: cover;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.grid-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 150px); /* Increased size of squares */
-    grid-template-rows: repeat(5, 150px); /* Increased size of squares */
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(5, 100px);
     gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.scoreboard-container {
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #8B0000; /* Dark red, like the image */
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
-}
-
-.team-selection {
-    margin-bottom: 20px;
-}
-
-.team-selection button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 1em;
+    font-size: 20px;
     cursor: pointer;
+    color: white;
+    position: relative;
 }
 
-.scoreboard {
+.card.flipped, .card.matched {
+    background-color: #32CD32; /* Light green for flipped or matched cards */
+}
+
+.card.matched {
+    pointer-events: none; /* Disable interaction for matched cards */
+}
+
+#scoreboard div {
+    margin-bottom: 10px;
+}
+
+#turn {
+    color: red; /* Red for Team 1, change dynamically */
+}
