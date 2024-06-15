@@ -19,18 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function createScoreboard() {
         const scoreboard = document.getElementById('scoreboard');
         scoreboard.innerHTML = '';
-        for (let i = 0; i < scores.length; i++) {
+        scores.forEach((score, index) => {
             let teamScore = document.createElement('div');
-            teamScore.className = `score team${i + 1}`;
+            teamScore.className = `score team${index + 1}`;
             let teamInfo = document.createElement('span');
-            teamInfo.textContent = `Team ${i + 1}`;
+            teamInfo.textContent = `Team ${index + 1}`;
             let teamScoreText = document.createElement('span');
-            teamScoreText.textContent = `Score: ${scores[i]}`;
+            teamScoreText.textContent = `Score: ${score}`;
             teamScore.appendChild(teamInfo);
             teamScore.appendChild(document.createElement('br'));
             teamScore.appendChild(teamScoreText);
             scoreboard.appendChild(teamScore);
-        }
+        });
     }
 
     function updateTurnIndicator() {
