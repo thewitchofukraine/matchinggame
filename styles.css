@@ -31,11 +31,7 @@ body {
     pointer-events: none; /* Disable interaction for matched cards */
 }
 #scoreboard {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    color: #2f4f4f; /* Dark slate gray for text */
-    font-size: 20px;
+    margin-top: 20px;
 }
 #controls {
     margin-bottom: 20px;
