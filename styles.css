@@ -128,11 +128,11 @@ body {
     height: 80px;
     margin: 10px;
     padding: 5px;
-    background-color: #FF6347; /* Default, modify per team below */
+    background-color: #FF6347; /* Default color, override per team below */
     color: white;
     text-align: center;
     vertical-align: middle;
-    border-radius: 5px;
+    border-radius: 0; /* Square corners */
     font-size: 0.8rem;
 }
 
@@ -140,6 +140,7 @@ body {
 #scoreboard .team2 { background-color: #32CD32; }  // Green
 #scoreboard .team3 { background-color: #4682B4; }  // Blue
 #scoreboard .team4 { background-color: #FFD700; }  // Yellow
+
 
 
 }
