@@ -119,4 +119,25 @@ body {
     #title {
         font-size: 2.5rem;
     }
+
+
+    
+#scoreboard div {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;  // Ensure text is vertically centered
+    color: white;
+    text-align: center;
+    margin: 0 10px;  // Space between score elements
+    border-radius: 5px;  // Rounded corners
+    background-color: #FF6347;  // Default color, in case class doesn't apply
+}
+
+#scoreboard .team1 { background-color: #FF6347; }  // Red
+#scoreboard .team2 { background-color: #32CD32; }  // Green
+#scoreboard .team3 { background-color: #4682B4; }  // Blue
+#scoreboard .team4 { background-color: #FFD700; }  // Yellow
+
+
 }
