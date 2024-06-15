@@ -8,18 +8,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="gameBoard" class="grid"></div>
-    <div id="sidebar">
-        <div id="controls">
-            <label for="teamCount">Choose number of teams:</label>
-            <select id="teamCount">
-                <option value="2">2 Teams</option>
-                <option value="3">3 Teams</option>
-                <option value="4">4 Teams</option>
-            </select>
+    <div class="container">
+        <div id="title">Matching Animal Pair Game</div>
+        <div id="gameBoard" class="grid"></div>
+        <div id="sidebar">
+            <div id="controls">
+                <label for="teamCount">Choose number of teams:</label>
+                <select id="teamCount">
+                    <option value="2">2 Teams</option>
+                    <option value="3">3 Teams</option>
+                    <option value="4">4 Teams</option>
+                </select>
+            </div>
+            <div id="scoreboard"></div>
+            <div id="turnIndicator">Next turn: Team 1</div>
         </div>
-        <div id="scoreboard"></div>
-        <div id="turnIndicator">Next turn: Team 1</div>
     </div>
     <script src="script.js"></script>
 </body>
