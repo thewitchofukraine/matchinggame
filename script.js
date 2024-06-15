@@ -6,11 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let flippedCards = [];
     let turn = 1;
     let scores = [];
-    let gameActive = true;
 
-    teamCountSelector.addEventListener('change', () => {
-        setupTeams(parseInt(teamCountSelector.value));
-    });
+    teamCountSelector.addEventListener('change', () => setupTeams(parseInt(teamCountSelector.value)));
 
     function setupTeams(teamCount) {
         scores = new Array(teamCount).fill(0);
@@ -25,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scores.forEach((score, index) => {
             let teamScore = document.createElement('div');
             teamScore.textContent = `Team ${index + 1} Score: ${score}`;
+            teamScore.className = `team${index + 1}`; // Assign class based on team number
             scoreboard.appendChild(teamScore);
         });
     }
@@ -54,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function flipCard(card) {
-        if (gameActive && !card.classList.contains('flipped') && flippedCards.length < 2) {
+        if (!card.classList.contains('flipped') && flippedCards.length < 2) {
             card.classList.add('flipped');
             card.textContent = card.dataset.animal;
             flippedCards.push(card);
@@ -76,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             switchTurn();
         }
         flippedCards = [];
-        gameActive = true;
     }
 
     function updateScore() {
