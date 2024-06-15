@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Raleway', sans-serif;
     text-align: center;
     background-color: #e6f7ff; /* Light blue background */
 }
@@ -31,11 +31,15 @@ body {
     pointer-events: none; /* Disable interaction for matched cards */
 }
 #scoreboard {
-    margin: 20px;
-    font-size: 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
     color: #2f4f4f; /* Dark slate gray for text */
 }
-#turn {
-    font-weight: bold;
-    color: #008000; /* Green text to indicate turn */
+.team-info {
+    font-size: 20px;
+    color: #008000; /* Green text for team info */
+}
+#controls {
+    margin-bottom: 20px;
 }
