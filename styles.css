@@ -1,7 +1,8 @@
+
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #e6f7ff; /* Light blue background */
+    background-color: #e6f7ff; /* Light blue background similar to the sky in the template */
 }
 .grid {
     display: grid;
@@ -31,8 +32,11 @@ body {
     pointer-events: none; /* Disable interaction for matched cards */
 }
 #scoreboard {
-    margin-top: 20px;
+    margin: 20px;
+    font-size: 20px;
+    color: #2f4f4f; /* Dark slate gray for text */
 }
-#controls {
-    margin-bottom: 20px;
+#turn {
+    font-weight: bold;
+    color: #008000; /* Green text to indicate turn */
 }

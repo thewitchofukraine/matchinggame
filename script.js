@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const animals = ['Lion', 'Tiger', 'Bear', 'Elephant', 'Lion', 'Tiger', 'Bear', 'Elephant', 'Wolf', 'Deer', 'Wolf', 'Deer', 'Fox', 'Monkey', 'Fox', 'Monkey', 'Zebra', 'Giraffe', 'Zebra', 'Giraffe'];
     const gameBoard = document.getElementById('gameBoard');
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.classList.add('card');
             card.dataset.animal = animal;
-            card.textContent = 'A' + (index + 1); // Display card index
+            card.textContent = 'A' + (index + 1); // Adding a label for accessibility, consider removing for production
             card.addEventListener('click', () => flipCard(card));
             gameBoard.appendChild(card);
         });
@@ -83,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function switchTurn() {
         turn = (turn % scores.length) + 1;
-        // Optional: Update some UI element to indicate the current turn
+        document.getElementById('turn').textContent = `Current Turn: Team ${turn}`;
     }
 
     setupTeams(parseInt(teamCountSelector.value)); // Initialize the game
