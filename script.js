@@ -19,12 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function createScoreboard() {
         const scoreboard = document.getElementById('scoreboard');
         scoreboard.innerHTML = '';
-        scores.forEach((score, index) => {
+        for (let i = 0; i < scores.length; i++) {
             let teamScore = document.createElement('div');
-            teamScore.textContent = `Team ${index + 1} Score: ${score}`;
-            teamScore.className = `team${index + 1}`; // Assign class based on team number
+            teamScore.className = `score team${i + 1}`;
+            let teamInfo = document.createElement('span');
+            teamInfo.textContent = `Team ${i + 1}`;
+            let teamScoreText = document.createElement('span');
+            teamScoreText.textContent = `Score: ${scores[i]}`;
+            teamScore.appendChild(teamInfo);
+            teamScore.appendChild(document.createElement('br'));
+            teamScore.appendChild(teamScoreText);
             scoreboard.appendChild(teamScore);
-        });
+        }
     }
 
     function updateTurnIndicator() {
@@ -78,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateScore() {
         scores[turn - 1]++;
-        document.querySelectorAll('#scoreboard div')[turn - 1].textContent = `Team ${turn} Score: ${scores[turn - 1]}`;
+        document.querySelectorAll('#scoreboard .score span:nth-child(2)')[turn - 1].textContent = `Score: ${scores[turn - 1]}`;
         updateTurnIndicator();
     }
 
@@ -87,5 +93,5 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTurnIndicator();
     }
 
-    setupTeams(parseInt(teamCountSelector.value));
+    setupTeams(parseInt(teamCountSelector.value)); // Initialize the game
 });
