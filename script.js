@@ -1,17 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const animals = [
-        'Lion', 'Tiger', 'Bear', 'Elephant', 'Lion', 'Tiger', 
-        'Bear', 'Elephant', 'Wolf', 'Deer', 'Wolf', 'Deer', 
-        'Fox', 'Monkey', 'Fox', 'Monkey', 'Zebra', 'Giraffe', 
-        'Zebra', 'Giraffe'
-    ];
+    const animals = ['Lion', 'Tiger', 'Bear', 'Elephant', 'Lion', 'Tiger', 'Bear', 'Elephant', 'Wolf', 'Deer', 'Wolf', 'Deer', 'Fox', 'Monkey', 'Fox', 'Monkey', 'Zebra', 'Giraffe', 'Zebra', 'Giraffe'];
     const gameBoard = document.getElementById('gameBoard');
     const teamCountSelector = document.getElementById('teamCount');
     const turnIndicator = document.getElementById('turnIndicator');
     let flippedCards = [];
     let turn = 1;
     let scores = [];
-    let isChecking = false;
+    let gameActive = true;
 
     teamCountSelector.addEventListener('change', () => {
         setupTeams(parseInt(teamCountSelector.value));
@@ -28,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scoreboard = document.getElementById('scoreboard');
         scoreboard.innerHTML = '';
         scores.forEach((score, index) => {
-            const teamScore = document.createElement('div');
+            let teamScore = document.createElement('div');
             teamScore.textContent = `Team ${index + 1} Score: ${score}`;
             scoreboard.appendChild(teamScore);
         });
@@ -40,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
+            let j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
@@ -59,22 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function flipCard(card) {
-        if (!isChecking && !card.classList.contains('flipped') && flippedCards.length < 2) {
+        if (gameActive && !card.classList.contains('flipped') && flippedCards.length < 2) {
             card.classList.add('flipped');
             card.textContent = card.dataset.animal;
             flippedCards.push(card);
             if (flippedCards.length === 2) {
-                isChecking = true;
                 setTimeout(checkForMatch, 1000);
             }
         }
     }
 
     function checkForMatch() {
-        const [card1, card2] = flippedCards;
-        if (card1.dataset.animal === card2.dataset.animal) {
-            card1.classList.add('matched');
-            card2.classList.add('matched');
+        if (flippedCards[0].dataset.animal === flippedCards[1].dataset.animal) {
+            flippedCards.forEach(card => card.classList.add('matched'));
             updateScore();
         } else {
             flippedCards.forEach(card => {
@@ -84,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             switchTurn();
         }
         flippedCards = [];
-        isChecking = false;
+        gameActive = true;
     }
 
     function updateScore() {
@@ -98,5 +90,5 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTurnIndicator();
     }
 
-    setupTeams(parseInt(teamCountSelector.value)); // Initialize the game
+    setupTeams(parseInt(teamCountSelector.value));
 });
