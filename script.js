@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const animals = ['Lion', 'Tiger', 'Bear', 'Elephant', 'Lion', 'Tiger', 'Bear', 'Elephant', 'Wolf', 'Deer', 'Wolf', 'Deer', 'Fox', 'Monkey', 'Fox', 'Monkey', 'Zebra', 'Giraffe', 'Zebra', 'Giraffe'];
     const gameBoard = document.getElementById('gameBoard');
@@ -38,39 +37,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function checkForMatch() {
         const [card1, card2] = flippedCards;
-        if (card1.dataset.animal === card2.dataset.animal) {
-            card1.classList.add('matched');
-            card2.classList.add('matched');
-            updateScore();
-            retainTurn();
-        } else {
-            card1.classList.remove('flipped');
-            card2.classList.remove('flipped');
-            card1.textContent = 'A' + (Array.from(gameBoard.children).indexOf(card1) + 1);
-            card2.textContent = 'A' + (Array.from(gameBoard.children).indexOf(card2) + 1);
-            switchTurn();
-        }
-        flippedCards = [];
-    }
-
-    function updateScore() {
-        if (turn === 1) {
-            score1++;
-            document.getElementById('score1').textContent = score1;
-        } else {
-            score2++;
-            document.getElementById('score2').textContent = score2;
-        }
-    }
-
-    function retainTurn() {
-        // Teams retain turn if they match
-    }
-
-    function switchTurn() {
-        turn = turn === 1 ? 2 : 1;
-        document.getElementById('turn').textContent = 'Team ' + turn;
-    }
-
-    createBoard();
-});
+       
