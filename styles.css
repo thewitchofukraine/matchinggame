@@ -16,30 +16,4 @@ body {
     height: 150px;
     background-color: #cd5c5c; /* Crimson red for unflipped cards */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-}
-.card.flipped, .card.matched {
-    background-color: #90ee90; /* Light green for flipped or matched cards */
-}
-.card.matched {
-    pointer-events: none; /* Disable interaction for matched cards */
-}
-#scoreboard {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    color: #2f4f4f; /* Dark slate gray for text */
-}
-.team-info {
-    font-size: 20px;
-    color: #008000; /* Green text for team info */
-}
-#controls {
-    margin-bottom: 20px;
-}
+   
